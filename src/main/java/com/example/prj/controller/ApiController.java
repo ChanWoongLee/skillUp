@@ -1,6 +1,6 @@
 package com.example.prj.controller;
 
-import com.example.prj.dto.carDTO;
+import com.example.prj.dto.Car;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -37,7 +37,7 @@ public class ApiController {
         return "queryParam";
     }// 키값 모름
 
-    @GetMapping(path = "/query-pqram")
+    @GetMapping(path = "/query-pqram2")
     public String queryParam2(
             @RequestParam String name,
             @RequestParam String email
@@ -47,12 +47,12 @@ public class ApiController {
 
     @GetMapping(path = "/query-param3")
     // req -> object mapper -> object -> method -> object -> object mapper -> json -> response
-    public carDTO queryParm3(@RequestBody carDTO car){
+    public Car queryParm3(@RequestBody Car car){
         return car;
     }// 이런식으로 DTO로 받음
 
     @PutMapping("/put")// 이런식의 reposeEntity 방법이 좋다.
-    public ResponseEntity<carDTO> put(@RequestBody carDTO car){
+    public ResponseEntity<Car> put(@RequestBody Car car){
         return ResponseEntity.status(HttpStatus.CREATED).body(car);
     }
 

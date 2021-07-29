@@ -9,7 +9,7 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 // 한 파일에 대해서 카멜에 대한 스네이크 인지
 @JsonNaming(value = PropertyNamingStrategy.SnakeCaseStrategy.class)
 @JsonInclude(JsonInclude.Include.NON_NULL) // null은 포함하지 않겠다.
-public class carDTO {
+public class Car {
     // 특정 변수만 활용
     @JsonProperty("name_name")
     private String name;

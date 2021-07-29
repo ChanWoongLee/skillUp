@@ -8,6 +8,7 @@ import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StopWatch;
 
 import java.lang.reflect.Method;
 
@@ -27,7 +28,11 @@ public class TimerAop {
 
     @Around("cut() && enableTimer()") // point컷이 지정된 메소드를 가진 함수인 cut을 around때 실행하겠다.
     public void around(ProceedingJoinPoint joinPoint) throws Throwable {
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
         Object result = joinPoint.proceed();
+        stopWatch.stop();
+        System.out.println("total time : "+ stopWatch.getTotalTimeSeconds());
     }
 
 
