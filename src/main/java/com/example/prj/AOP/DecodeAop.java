@@ -14,8 +14,10 @@ import java.util.Base64;
 @Aspect
 @Component
 public class DecodeAop {
-
-    @Pointcut("execution(* com.example.prj.controller..*.*(..))") // 해당 디렉토리 아래 모든 메소드에 대해서 실행시키겠다.
+    //execution 식 : [수식어](생략가능) [클래스이름].이름(파라미터)
+    // * : 모든 값을 표현,   .. : 0개 이상을 의미
+    // AOPTestCotroller 포함 하위 디렉토리 포함 (..는 . 과다르게 하위 디렉토리 모두포함) 파라미터 여러개 메소드를 호출
+    @Pointcut("execution(* com.example.prj.controller.AOPTestController..*(..))")
     private void cut(){
 
     }

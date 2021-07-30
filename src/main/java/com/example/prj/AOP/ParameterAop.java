@@ -11,7 +11,7 @@ import java.lang.reflect.Method;
 @Component // spring 에서 bean으로 관리
 public class ParameterAop {
 
-    @Pointcut("execution(* com.example.prj.controller..*.*(..))") // 해당 디렉토리 아래 모든 메소드에 대해서 실행시키겠다.
+    @Pointcut("execution(* com.example.prj.controller.AOPTestController..*(..))")  // 해당 디렉토리 아래 모든 메소드에 대해서 실행시키겠다.
     private void cut(){
 
     }
@@ -25,6 +25,6 @@ public class ParameterAop {
     
     @AfterReturning(value = "cut()", returning = "returnObj") // 반환값을 알기위해서
     public void afterReturn(JoinPoint joinPoint, Object returnObj){ // 해당 리턴값이 오브젝트로 반환됨
-        System.out.println("returnObj" + returnObj);
+        System.out.println("returnObj : " + returnObj);
     }
 }

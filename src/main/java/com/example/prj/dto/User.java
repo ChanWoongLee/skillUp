@@ -31,16 +31,16 @@ public class User {
     //@Birthday()
     private String birthDay;
 
-    @AssertTrue // Custom validation을 위한 어노테이션
-    // 이런식으로 하면 이런 검증하는 코드를 위해서 중복이 발생함 따라서 따로 어노테이션을 만드는게 좋음
-    public boolean isReqBirthday(){
-        try {
-            LocalDate localDate = LocalDate.parse(this.birthDay, DateTimeFormatter.ofPattern("yyyyyMMDD"));
-        }catch (Exception e){
-            return false;
-        }
-        return true;
-    }
+//    @AssertTrue // Custom validation을 위한 어노테이션  valid를 통해 true만 통과
+//    // 이런식으로 하면 이런 검증하는 코드를 위해서 중복이 발생함 따라서 따로 어노테이션을 만드는게 좋음
+//    public boolean isReqBirthday(){
+//        try {
+//            LocalDate localDate = LocalDate.parse(this.birthDay, DateTimeFormatter.ofPattern("yyyyyMMDD"));
+//        }catch (Exception e){
+//            return false;
+//        }
+//        return true;
+//    }
 
     @Override
     public String toString() {

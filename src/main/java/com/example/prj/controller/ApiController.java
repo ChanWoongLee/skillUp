@@ -12,7 +12,7 @@ import java.util.Map;
 @RequestMapping("/api") // uri를 지정하는 annotation
 public class ApiController {
 
-    @GetMapping("/hello")
+    @PostMapping("/hello")
     public String hello(){
         return "hello spring boot";
     }
@@ -54,6 +54,16 @@ public class ApiController {
     @PutMapping("/put")// 이런식의 reposeEntity 방법이 좋다.
     public ResponseEntity<Car> put(@RequestBody Car car){
         return ResponseEntity.status(HttpStatus.CREATED).body(car);
+    }
+
+    @PostMapping("/post-test")
+    public void post(@RequestBody Map<String, Object> requestData){
+
+        requestData.forEach((key, value) -> {
+            System.out.println("key : " + key);
+            System.out.println("value : " + value);
+        });
+
     }
 
 }

@@ -16,18 +16,19 @@ import java.lang.reflect.Method;
 @Component
 public class TimerAop {
 
-    @Pointcut("execution(* com.example.prj.controller..*.*(..))") // 해당 디렉토리 아래 모든 메소드에 대해서 실행시키겠다.
+    @Pointcut("execution(* com.example.prj.controller.AOPTestController..*(..))")  // 해당 디렉토리 아래 모든 메소드에 대해서 실행시키겠다.
     private void cut(){
 
     }
 
-    @Pointcut("@annotation(com.example.prj.annotation.Timer)")
+    @Pointcut("@annotation(com.example.prj.annotation.Timer)") // 해당 어노테이션이 설정된 메소드만~!
     private void enableTimer(){
 
     }
 
     @Around("cut() && enableTimer()") // point컷이 지정된 메소드를 가진 함수인 cut을 around때 실행하겠다.
     public void around(ProceedingJoinPoint joinPoint) throws Throwable {
+        System.out.println("Timer");
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
         Object result = joinPoint.proceed();
