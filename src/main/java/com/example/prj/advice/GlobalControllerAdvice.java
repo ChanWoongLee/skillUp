@@ -1,5 +1,6 @@
 package com.example.prj.advice;
 
+import com.example.prj.eceception.AuthException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -15,5 +16,10 @@ public class GlobalControllerAdvice {
 //
 //        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("");
 //    }
+
+    @ExceptionHandler(value = AuthException.class)
+    public ResponseEntity authException(AuthException e){
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
+    }
 
 }

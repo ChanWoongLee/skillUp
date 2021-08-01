@@ -1,6 +1,7 @@
 package com.example.prj.Interceptor;
 
 import com.example.prj.annotation.Auth;
+import com.example.prj.eceception.AuthException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
@@ -26,11 +27,11 @@ public class AuthInterceptor implements HandlerInterceptor {
         // Auth 권한을 가진 요청에 대해서는 세션, 쿠키 권한 체크
         if(hasAnnotation){
             String query = UriComponentsBuilder.fromUriString(request.getRequestURI()).query(request.getQueryString()).build().getQuery();
-            log.debug("quert : {}",query);
+            log.debug("query : {}",query);
             if(query.equals("name=steve")){
                 return true;
             }
-            return false;
+            throw new AuthException("권한 인증에 실패했습니다");
         }
 
         return true;
