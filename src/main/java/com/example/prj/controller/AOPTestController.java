@@ -37,7 +37,7 @@ public class AOPTestController {
 
     @Decode
     @PostMapping("/put")
-    public User put(User user){
-        return user;
+    public Cust put(Cust cust){
+        return cust;
     }
 }

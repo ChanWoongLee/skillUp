@@ -29,6 +29,7 @@ public class DecodeAop {
 
     @Before("cut() && enableDecode()")
     public void before(JoinPoint joinPoint) throws UnsupportedEncodingException {
+        System.out.println("encidong.....");
         Object[] args = joinPoint.getArgs();
         for(Object arg : args){
             if(arg instanceof User){
@@ -42,6 +43,7 @@ public class DecodeAop {
     // 이런식으로 request 즉 실행되는 메소드에 대해서 이렇게 암호화가 가능하다.
     @AfterReturning(value = "cut() && enableDecode()", returning = "returnObj")
     public void afterReturn(JoinPoint joinPoint,Object returnObj){
+        System.out.println("decoding.....");
         if(returnObj instanceof User){
             User user = (User)returnObj;
             String email = user.getEmail();

@@ -1,6 +1,7 @@
 package com.example.prj.controller;
 
 import com.example.prj.dto.Car;
+import com.example.prj.dto.Cust;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -45,7 +46,7 @@ public class ApiController {
         return "queryParam2";
     }//잘못받을 수 있음 따라서
 
-    @GetMapping(path = "/query-param3")
+    @PostMapping(path = "/query-param3")
     // req -> object mapper -> object -> method -> object -> object mapper -> json -> response
     public Car queryParm3(@RequestBody Car car){
         return car;
@@ -66,6 +67,10 @@ public class ApiController {
 
     }
 
+    @PostMapping("/test")
+    public Cust put(@RequestBody Cust cust){
+        return cust;
+    }
 }
 
 
