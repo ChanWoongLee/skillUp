@@ -16,15 +16,14 @@ public class OrderServiceImpl implements OrderService {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
-//private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
+    //private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
     //private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
     // 구현객체의 연결과 설정을 위한 다른 설정을 만들ㅈ다!!
-    private final DiscountPolicy;
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
         Member member = memberRepository.findById(memberId);
         int discountPrice = discountPolicy.discount(member, itemPrice);
-        return new Order(memberId,itemName,itemPrice,discountPrice);
+        return new Order(memberId, itemName, itemPrice, discountPrice);
     }
 }

@@ -12,6 +12,7 @@ public class ApplicationContextProvider implements ApplicationContextAware {
     @Override // 여기서 어플레케이션컨텍스트 주입은 스프링에서 알아서 해준다.
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         context = applicationContext;
+
     }
 
     public static ApplicationContext getContext(){
