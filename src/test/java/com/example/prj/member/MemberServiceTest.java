@@ -6,10 +6,11 @@ import com.example.prj.Member.MemberService;
 import com.example.prj.Member.MemberServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class MemberServiceTest {
-
-    MemberService memberService = new MemberServiceImpl();
+    @Autowired
+    MemberService memberService;
 
     @Test
     void join(){
