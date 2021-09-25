@@ -2,6 +2,8 @@ package com.example.prj.controller;
 
 import com.example.prj.dto.Car;
 import com.example.prj.dto.Cust;
+import com.example.prj.dto.Params;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,9 +11,16 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 //@Controller 라고 쓰면 String recurn시 static에서 리소스를 찾게된다.
 //리소스를 찾는것이 아니라 reponseBody를 만들어서 return하고 싶으면 @responseBody를 추가해야한다.
+@Slf4j
 @RestController // 해당 클래스는 rest api 처리하는 controller
 @RequestMapping("/api") // uri를 지정하는 annotation
 public class ApiController {
+
+    @PostMapping("/test")
+    public Params test(@RequestBody Params params){
+        log.info(params.toString());
+        return params;
+    }
 
     @PostMapping("/hello")
     public String hello(){
@@ -65,11 +74,6 @@ public class ApiController {
             System.out.println("value : " + value);
         });
 
-    }
-
-    @PostMapping("/test")
-    public Cust put(@RequestBody Cust cust){
-        return cust;
     }
 
 }

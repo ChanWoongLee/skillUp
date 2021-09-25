@@ -14,7 +14,7 @@ import java.io.IOException;
 @Slf4j
 //@Component
 //ServletComponent 어노테이션 추가한다음에  WebFilter 어노테이션을 통해 원하는 컨트롤러에 필터 적용가능
-@WebFilter(urlPatterns = "/api/test/*")
+//@WebFilter(urlPatterns = "/api/test/*")
 public class GlobalFilter implements Filter {
 
     @Override
